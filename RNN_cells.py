@@ -134,10 +134,7 @@ def set_nonlinearity(param):
 class hRNNCell(nn.Module):
     def __init__(self, params):
         """
-        Full rank RNN cell
-
-        Args:
-            params: dictionary with model params
+        RFLO
         """
         super(hRNNCell, self).__init__()
         seed_everything(params["seed"])
@@ -203,15 +200,6 @@ class hRNNCell(nn.Module):
     def forward(self, input, h, y, mask, i, e_p, pred=False):
         """
         Do a forward pass through one timestep
-
-        Args:
-            input: tensor of size [batch_size, seq_len, n_inp]
-            x: hidden state at current time step, tensor of size [batch_size, n_rec]
-            noise: noise at current time step, tensor of size [batch_size, n_rec]
-
-        Returns:
-            x: hidden state at next time step, tensor of size [batch_size, n_rec]
-            output: linear readout at next time step, tensor of size [batch_size, n_out]
         """
 
         alpha = self.dt / self.tau[0]
